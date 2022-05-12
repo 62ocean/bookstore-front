@@ -1,0 +1,66 @@
+#shopping-cart {
+    padding: 50px 0;
+    background-color: #ffffff;
+    color: #000;
+}
+.cart-container {
+    justify-content: center;
+    padding: 0 50px;
+    background-color: #ffffff;
+    border-left: 2px solid #01D3F9;
+    border-right: 2px solid #01D3F9;
+}
+.cart-container .book-in-cart {
+    border-bottom: 1px solid #01D3F9;
+    height: 150px;
+    width: 100%;
+    position: relative;
+}
+.cart-container .book-in-cart .option-wrapper {
+    float: left;
+    padding-right: 100px;
+    line-height: 180px;
+}
+.cart-container .book-in-cart .image {
+    margin: 0;
+    height: 140px;
+    padding: 20px 0;
+    float: left;
+}
+.cart-container .book-in-cart .info {
+    float: left;
+    padding-left: 50px;
+    padding-top: 50px;
+}
+.cart-container .book-in-cart .buy-number{
+    position: absolute;
+    right: 100px;
+    bottom: 50px;
+}
+.autoImg {
+    width: auto;
+    height: 100%;
+}
+.settlement {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 60px;
+    width: 25%;
+    border: 1px solid #00D3F9;
+    background-color: #ffffff;
+}
+h3.settlement {
+    float:left;
+}
+.settlement h3{
+    float: right;
+    position: relative;
+    margin-right: 70px;
+}
+a.button-bottom{
+    float: right;
+    position: relative;
+    margin-right: 70px;
+    line-height: 60px;
+}

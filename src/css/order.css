@@ -1,0 +1,74 @@
+#order {
+    padding: 50px 0;
+    background-color: #ffffff;
+    color: #000;
+}
+.order-container {
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 0 50px;
+    border-left: 2px solid #01D3F9;
+    border-right: 2px solid #01D3F9;
+}
+.order-container .one-order {
+    padding: 10px 100px 20px 100px;
+    border-bottom: 1px solid #01D3F9;
+    height: auto;
+    position: relative;
+    line-height: 0.8;
+}
+
+.book-in-order .name {
+    float: left;
+}
+.book-in-order .number {
+    float: left;
+    position: absolute;
+    right: 150px;
+}
+.book-in-order .price {
+    float: left;
+    position: absolute;
+    right: 50px;
+}
+.book-in-order {
+    font-size: 1.2em;
+    clear: left;
+}
+.total {
+    text-align: center;
+    clear: left;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/*.order-form {*/
+/*    display: table;*/
+/*    padding: 10px;*/
+/*    border: thin solid #00D3F9;*/
+/*    background-color: #ffffff;*/
+/*    margin: 0px auto 100px auto;*/
+/*}*/
+/*.order-form textarea {*/
+/*    width: 500px;*/
+/*    height: 200px;*/
+/*}*/
+/*div.table-row {*/
+/*    display: table-row;*/
+/*}*/
+/*div.table-row p {*/
+/*    display: table-cell;*/
+/*    vertical-align: top;*/
+/*    padding: 3px;*/
+/*}*/
+/*div.table-row p:first-child {*/
+/*    text-align: left;*/
+/*}*/
+p.heading {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.order-form {
+    padding: 50px 100px 50px 200px;
+}
