@@ -5,6 +5,7 @@ import HomeView from "./views/HomeView";
 import MyCartView from "./views/MyCartView";
 import MyOrderView from "./views/MyOrderView";
 import TakeOrderView from "./views/TakeOrderView";
+import LoginView from "./views/LoginView";
 import BookView from "./views/BookView";
 
 class BasicRoute extends React.Component{
@@ -22,7 +23,8 @@ class BasicRoute extends React.Component{
         return(
             <Router history={history}>
                 <Routes>
-                    <Route exact path="/" element={<HomeView />} />
+                    <Route exact path="/" element={<LoginView />} />
+                    <Route exact path="/home" element={<HomeView />} />
                     <Route exact path="/my-cart" element={<MyCartView />} />
                     <Route exact path="/my-order" element={<MyOrderView />} />
                     <Route exact path="/take-order" element={<TakeOrderView />} />

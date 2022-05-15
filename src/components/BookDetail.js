@@ -1,34 +1,71 @@
-import React from "react";
+import React ,{useState, useEffect} from "react";
 import "../css/bookdetail.css"
-import {Button, Space} from "antd";
+import {Button, Space, message} from "antd";
+import {Link, useSearchParams} from "react-router-dom";
+import {getBook} from "../services/bookService";
+import {addCartBook} from "../services/cartService";
+
+
 
 const BookDetail = (props) => {
 
-    const {info} = props;
+    const [book, setBook] = useState(0);
+
+    const [params] = useSearchParams();
+    const id = params.get("id");
+    const user = JSON.parse(localStorage.getItem("user"));
+    // console.log(id);
+
+    useEffect(() => {
+        const callback =  (data) => {
+            console.log(data);
+            setBook(data);
+        }
+        if (book === 0) {
+            getBook(id, callback);
+        }
+    });
+
+    const HandleAddCart = () => {
+        // console.log(id, user.userId);
+        const data = {
+            "book_id" : id,
+            "user_id" : user.userId,
+        };
+        console.log(data);
+        addCartBook(data, add_callback);
+    }
+    const add_callback = (data) => {
+        // console.log(data);
+        if (data === 2) message.info(book.name+"添加购物车成功！");
+        else message.info(book.name+"已在购物车中！");
+
+    }
 
     return (
         <section id="details">
             <div className="container">
                 <div className="book-details-container">
                     <div className="book-details-img">
-                        <img className="autoImg" src={require("../assets/images/bk/CSAPP.jpg")} />
+                        <img className="autoImg" src={book.image} />
                     </div>
                     <div className="book-details-info">
-                        <h2>深入理解计算机系统</h2>
+                        <h2>{book.name}</h2>
                         <br />
-                        <p>作者：兰德尔·E·布莱恩特</p>
+                        <p>作者：{book.author}</p>
+                        <p>类别：{book.type}</p>
                         <br />
                         <p>
-                            程序员必读经典著作！理解计算机系统书目，10万程序员共同选择。第二版销售突破100000册，第三版重磅上市！
+                            {book.description}
                         </p>
                         <br />
-                        <h2 className="book-price">￥136.90</h2>
-                        <p>库存：1200</p>
+                        <h2 className="book-price">￥{book.price}</h2>
+                        <p>库存：{book.inventory}</p>
                         <br />
                         <br />
-                        <Button>加入购物车</Button>
+                        <Button onClick={HandleAddCart}>加入购物车</Button>
                         <Button>立即购买</Button>
-                        <Button>返回</Button>
+                        <Link to={"/home"}><Button>返回</Button></Link>
                     </div>
                 </div>
             </div>

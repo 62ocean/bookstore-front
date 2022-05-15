@@ -14,15 +14,16 @@ class MyCartView extends React.Component {
     render () {
         return (
             <Layout>
-                <Header>
+                <Header style={{
+                    position: 'fixed',
+                    zIndex: 1,
+                    width: '100%',
+                }}>
                     <MenuBar />
                 </Header>
                 <Content>
                     <CartList />
                 </Content>
-                <Footer>
-                    <SummaryBar />
-                </Footer>
             </Layout>
         );
     }

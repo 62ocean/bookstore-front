@@ -1,15 +1,31 @@
-import React from "react";
-import { Form, Input, Button, Checkbox, Radio } from 'antd';
+import React  from "react";
+import { Form, Input, Button, Checkbox, Radio, message } from 'antd';
 import "../css/order.css"
+import {submitOrder} from "../services/orderService";
+import {history} from "../utils/history";
 
-const OrderForm = () => {
+const OrderForm = (props) => {
+
+    const user = JSON.parse(localStorage.getItem("user"));
+
     const onFinish = (values) => {
-        console.log('Success:', values);
+        // console.log('Success:', values);
+
+        values.user_id = user.userId;
+        values.price = props.price;
+        console.log(values);
+        submitOrder(values,callback);
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const callback = (data) => {
+        message.info("下订单成功！");
+        history.push("/my-order");
+        history.go();
+    }
 
     return (
         <div className="order-form">
@@ -76,7 +92,7 @@ const OrderForm = () => {
                         },
                     ]}
                 >
-                    <Radio.Group defaultValue={0}>
+                    <Radio.Group>
                         <Radio value={1}>是</Radio>
                         <Radio value={0}>否</Radio>
                     </Radio.Group>

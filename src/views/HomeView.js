@@ -4,6 +4,7 @@ import MenuBar from "../components/MenuBar";
 import Banner from  "../components/Banner"
 import SearchBar from "../components/SearchBar";
 import {BookList} from "../components/BookList";
+import "../css/bootstrap.css"
 
 const {Header, Content, Footer} = Layout;
 
@@ -16,13 +17,16 @@ class HomeView extends Component {
     render() {
         return (
             <Layout>
-                <Header>
+                <Header style={{
+                    position: 'fixed',
+                    zIndex: 1,
+                    width: '100%',
+                }}>
                     <MenuBar />
                 </Header>
                 <Content>
                     <div>
                         <Banner />
-                        <SearchBar />
                         <BookList />
                     </div>
                 </Content>

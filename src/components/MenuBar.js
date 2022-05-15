@@ -7,41 +7,45 @@ const items = [
     {
         label: '所有书籍',
         key: 'books',
-        link: "/",
     },
     {
         label: '我的购物车',
         key: 'cart',
-        link: "/my-cart",
     },
     {
         label: '我的订单',
         key: 'order',
-        link: "/my-order",
+    },
+    {
+        label: '退出登录',
+        key: 'logout',
     }
 ];
 
 const MenuBar = () => {
-    var url = history.location.pathname;
-    var selectKey;
-    if (url == "/") selectKey = 'books';
-    else if (url == "/my-cart") selectKey = 'cart';
-    else if (url == "/my-order") selectKey = 'order';
+    const url = history.location.pathname;
+    let selectKey;
+    if (url === "/home") selectKey = 'books';
+    else if (url === "/my-cart") selectKey = 'cart';
+    else if (url === "/my-order") selectKey = 'order';
 
     const [current, setCurrent] = React.useState(selectKey);
 
 
     const onClick = (e) => {
-
-        if (e.key == 'books') history.push("/");
-        else if (e.key == 'cart') history.push("/my-cart");
-        else if (e.key == 'order') history.push("/my-order");
+        if (e.key === 'books') history.push("/home");
+        else if (e.key === 'cart') history.push("/my-cart");
+        else if (e.key === 'order') history.push("/my-order");
+        if (e.key === 'logout') {
+            localStorage.clear();
+            history.push("/");
+        }
         history.go();
     };
 
 
     return (
-        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+        <Menu  onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
     );
 
 };

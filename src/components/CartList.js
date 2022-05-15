@@ -1,48 +1,44 @@
 import React from "react";
 import {List} from "antd";
 import CartItem from "./CartItem";
+import {getCartBooks} from "../services/cartService";
 import "../css/shopping-cart.css"
-
-const BOOKS = [
-    {name:'深入理解计算机系统', price:'￥100', image:"images/bk/CSAPP.jpg"},
-    {name:'三体（全三册）', price:'￥20', image:"images/bk/三体.jpg"},
-    {name:'小王子', price:'￥40', image:'images/bk/小王子.jpg'},
-    {name:'悲惨世界（上中下）', price:'￥80', image:'images/bk/悲惨世界.jpg'},
-    {name:'探索月球', price:'￥133.2', image:'images/bk/探索月球.jpg'},
-    {name:'追风筝的人', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-    {name:'魔力的胎动', price:'￥35.9', image:'images/bk/魔力的胎动.jpg'},
-    {name:'追风筝的人2', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-    {name:'追风筝的人3', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-    {name:'追风筝的人4', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-];
+import SummaryBar from "./SummaryBar";
 
 export class CartList extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {books: BOOKS};
+        this.state = {cartBooks: []};
     }
 
     componentDidMount() {
 
         const callback =  (data) => {
-            this.setState({books:data});
+            this.setState({cartBooks:data});
         };
-
-        // getBooks({"search":null}, callback);
+        const user = JSON.parse(localStorage.getItem("user"));
+        getCartBooks(user.userId, callback);
 
     }
 
     render() {
+        let cartBooks = this.state.cartBooks;
+        let totalPrice = 0;
+        for (let i = 0; i < cartBooks.length; ++i) {
+            // console.log(orders[i]);
+            totalPrice += cartBooks[i].price * cartBooks[i].num;
+        }
+        const user = JSON.parse(localStorage.getItem("user"));
         return (
             <section id="shopping-cart">
                 <div className="container">
                     <div className="cart-container">
                         <List
                             size="large"
-                            header={<div>购物车</div>}
+                            header={<div>购物车/{user.username}</div>}
                             bordered
-                            dataSource={this.state.books}
+                            dataSource={this.state.cartBooks}
                             pagination={{
                                 onChange :page => {
                                     console.log(page);
@@ -57,6 +53,7 @@ export class CartList extends React.Component{
                         />
                     </div>
                 </div>
+                <SummaryBar totalPrice={totalPrice.toFixed(2)}/>
             </section>
 
         );

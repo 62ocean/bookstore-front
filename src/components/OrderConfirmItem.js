@@ -7,8 +7,8 @@ const OrderConfirmItem = (props) => {
     return (
         <div className="book-in-order">
             <p className="name">{info.name}</p>
-            <p className="number">×1</p>
-            <p className="price">{info.price}</p>
+            <p className="number">×{info.num}</p>
+            <p className="price">￥{info.price}</p>
         </div>
     );
 

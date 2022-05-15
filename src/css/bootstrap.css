@@ -22,8 +22,16 @@
 .summary-button {
     float: left;
     padding-left: 200px;
+    padding-right: 200px;
 }
 .summary-bar {
     float: right;
+}
+.ant-layout-header {
+    height: 64px;
+    padding: 0 50px;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 64px;
+    background: #ffffff;
 }
 

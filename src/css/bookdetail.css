@@ -14,7 +14,7 @@
 .book-container .book .book-info {
     padding-bottom: 10px;
 }
-.autoImg {
+.book-details-img .autoImg {
     width: 100%;
     height: auto;
 }

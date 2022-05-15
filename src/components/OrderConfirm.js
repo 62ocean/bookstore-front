@@ -2,35 +2,39 @@ import React from "react";
 import {List} from "antd";
 import "../css/order.css"
 import OrderConfirmItem from "./OrderConfirmItem";
+import {getCartBooks} from "../services/cartService";
+import OrderForm from "./OrderForm";
 
-const BOOKS = [
-    {name:'深入理解计算机系统', price:'￥100', image:"images/bk/CSAPP.jpg"},
-    {name:'三体（全三册）', price:'￥20', image:"images/bk/三体.jpg"},
-    {name:'小王子', price:'￥40', image:'images/bk/小王子.jpg'},
-    {name:'悲惨世界（上中下）', price:'￥80', image:'images/bk/悲惨世界.jpg'},
-    {name:'探索月球', price:'￥133.2', image:'images/bk/探索月球.jpg'},
-    {name:'追风筝的人', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-    {name:'魔力的胎动', price:'￥35.9', image:'images/bk/魔力的胎动.jpg'},
-    {name:'追风筝的人2', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-    {name:'追风筝的人3', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-    {name:'追风筝的人4', price:'￥35.3', image:'images/bk/追风筝的人.jpg'},
-];
 
 export class OrderConfirm extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {orders: BOOKS};
+        this.state = {
+            orders: [],
+        };
     }
 
     componentDidMount() {
 
         const callback =  (data) => {
-            this.setState({books:data});
+            console.log(data);
+            this.setState({orders:data});
         };
+
+        const user = JSON.parse(localStorage.getItem("user"));
+        getCartBooks(user.userId, callback);
+
+
     }
 
     render() {
+        let orders = this.state.orders;
+        let totalPrice = 0;
+        for (let i = 0; i < orders.length; ++i) {
+            // console.log(orders[i]);
+            totalPrice += orders[i].price * orders[i].num;
+        }
         return (
             <section id="homeSec1">
                 <div className="container border-bottom">
@@ -53,8 +57,9 @@ export class OrderConfirm extends React.Component{
                             </List.Item>
                         }
                     />
-                    <p className="total">总计：￥164</p>
+                    <p className="total">总计：￥{totalPrice.toFixed(2)}</p>
                 </div>
+                <OrderForm price={totalPrice} />
             </section>
 
         );
