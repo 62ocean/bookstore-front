@@ -14,7 +14,6 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        const filterText = this.props.filterText;
         return (
             <section id="hero-text">
                 <div className="container">
@@ -26,7 +25,7 @@ class SearchBar extends React.Component {
                                     type="text"
                                     name="input-box"
                                     placeholder="Search..."
-                                    value={filterText}
+                                    // value={filterText}
                                     onChange={this.handleFilterTextChange}
                                 />
                             </form>

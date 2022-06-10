@@ -10,7 +10,11 @@ export class BookList extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {books: []};
+        this.state = {
+            books: [],
+            filterText: "",
+        };
+        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
     }
 
     componentDidMount() {
@@ -24,15 +28,27 @@ export class BookList extends React.Component{
 
     }
 
+    handleFilterTextChange(filterText) {
+        this.setState({
+            filterText: filterText,
+        });
+    }
+
     render() {
+        const filterText = this.state.filterText;
+        const showBooks = [];
+        this.state.books.forEach((book) => {
+            if (book.name.indexOf(filterText) === -1) return;
+            showBooks.push(book);
+        });
         return (
             <div>
-                <SearchBar />
+                <SearchBar onFilterTextChange={this.handleFilterTextChange}/>
 
                 <div className="container">
                     <List
                         grid={{gutter: 10, column: 5}}
-                        dataSource={this.state.books}
+                        dataSource={showBooks}
                         pagination={{
                             onChange: page => {
                                 console.log(page);

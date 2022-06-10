@@ -15,6 +15,7 @@ export class CartList extends React.Component{
     componentDidMount() {
 
         const callback =  (data) => {
+            console.log(data);
             this.setState({cartBooks:data});
         };
         const user = JSON.parse(localStorage.getItem("user"));

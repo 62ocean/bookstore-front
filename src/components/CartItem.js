@@ -11,7 +11,7 @@ const CartItem = (props) => {
 
     const handleDelete = () => {
         const data = {
-            "book_id" : info.bookId,
+            "book_id" : info.book_id,
             "user_id" : user.userId,
         };
         console.log(data);
@@ -19,7 +19,7 @@ const CartItem = (props) => {
     }
     const callback = (data) => {
         // this.forceUpdate();
-        console.log("back!");
+        // console.log("back!");
         history.go();
     }
 
