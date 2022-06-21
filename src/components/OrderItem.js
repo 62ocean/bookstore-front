@@ -11,7 +11,6 @@ export class OrderItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
             visible: false,
         };
 
@@ -19,32 +18,10 @@ export class OrderItem extends React.Component{
         this.onClose = this.onClose.bind(this);
     }
 
-    componentDidMount() {
-
-
-        // const callback =  (data) => {
-        //     // console.log(data);
-        //     if (data != null) this.setState({items:data});
-        // };
-        //
-        // const {info} = this.props;
-        // // console.log(info);
-        // getOrderItems(info.orderId, callback);
-
-    }
-
     showOrderBooks() {
-        const callback =  (data) => {
-            console.log(data);
-            this.setState({
-                items: data,
-                visible: true,
-            });
-        };
-
-        const {info} = this.props;
-        // console.log(info);
-        getOrderItems(info.orderId, callback);
+        this.setState({
+            visible: true,
+        })
     }
 
     onClose() {
@@ -57,8 +34,8 @@ export class OrderItem extends React.Component{
         console.log(this.state.items);
         const {info} = this.props;
         let showItems = [];
-        for (let i = 0; i < this.state.items.length; ++i) {
-            showItems.push(<p>{this.state.items[i].name} ×{this.state.items[i].num}</p>);
+        for (let i = 0; i < info.orderItems.length; ++i) {
+            showItems.push(<p>{info.orderItems[i].book.name} ×{info.orderItems[i].num}</p>);
          }
         return (
             <div className="site-drawer-render-in-current-wrapper">
@@ -74,7 +51,7 @@ export class OrderItem extends React.Component{
                     }}
                 >
                     <Button type="primary" onClick={this.showOrderBooks}>
-                        详细信息
+                        书籍详情
                     </Button>
                 </div>
                 <Drawer

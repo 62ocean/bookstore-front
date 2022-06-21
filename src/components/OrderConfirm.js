@@ -33,7 +33,7 @@ export class OrderConfirm extends React.Component{
         let totalPrice = 0;
         for (let i = 0; i < orders.length; ++i) {
             // console.log(orders[i]);
-            totalPrice += orders[i].price * orders[i].num;
+            totalPrice += orders[i].book.price * orders[i].num;
         }
         return (
             <section id="homeSec1">

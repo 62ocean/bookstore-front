@@ -28,7 +28,7 @@ export class CartList extends React.Component{
         let totalPrice = 0;
         for (let i = 0; i < cartBooks.length; ++i) {
             // console.log(orders[i]);
-            totalPrice += cartBooks[i].price * cartBooks[i].num;
+            totalPrice += cartBooks[i].book.price * cartBooks[i].num;
         }
         const user = JSON.parse(localStorage.getItem("user"));
         return (
