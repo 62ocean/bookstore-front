@@ -11,7 +11,7 @@
     border-right: 2px solid #01D3F9;
 }
 .order-container .one-order {
-    padding: 10px 100px 20px 100px;
+    padding: 6px 100px 10px 100px;
     border-bottom: 1px solid #01D3F9;
     height: auto;
     position: relative;
@@ -44,7 +44,7 @@
 
 .site-drawer-render-in-current-wrapper {
     position: relative;
-    height: 200px;
+    height: 220px;
     width: 100%;
     padding: 20px;
     overflow: hidden;

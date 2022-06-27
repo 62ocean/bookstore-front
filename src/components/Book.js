@@ -24,11 +24,6 @@ export class Book extends React.Component {
         const {info} = this.props;
 
         return (
-            // <Link to={{
-            //     pathname: '/bookDetails',
-            //     search: '?id=' + info.bookId}}
-            //       target="_blank"
-            // >
             <Link to={"/book-detail?id="+info.id}>
                 <Card
                     hoverable

@@ -7,6 +7,10 @@ import MyOrderView from "./views/MyOrderView";
 import TakeOrderView from "./views/TakeOrderView";
 import LoginView from "./views/LoginView";
 import BookView from "./views/BookView";
+import AdminBookView from "./views/AdminBookView";
+import AdminUserView from "./views/AdminUserView";
+import AdminOrderView from "./views/AdminOrderView";
+import StatisticsView from "./views/StatisticsView";
 
 class BasicRoute extends React.Component{
 
@@ -29,6 +33,11 @@ class BasicRoute extends React.Component{
                     <Route exact path="/my-order" element={<MyOrderView />} />
                     <Route exact path="/take-order" element={<TakeOrderView />} />
                     <Route exact path="/book-detail" element={<BookView />} />
+
+                    <Route exact path="/book-manage" element={<AdminBookView />} />
+                    <Route exact path="/user-manage" element={<AdminUserView />} />
+                    <Route exact path="/order-manage" element={<AdminOrderView />} />
+                    <Route exact path="/statistics" element={<StatisticsView />} />
                     {/*<Redirect from="/*" to="/" />*/}
                 </Routes>
 

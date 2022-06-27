@@ -38,9 +38,10 @@ export class BookList extends React.Component{
         const filterText = this.state.filterText;
         const showBooks = [];
         this.state.books.forEach((book) => {
-            if (book.name.indexOf(filterText) === -1) return;
+            if ((book.name.indexOf(filterText) === -1) || (book.available === 0)) return;
             showBooks.push(book);
         });
+
         return (
             <div>
                 <SearchBar onFilterTextChange={this.handleFilterTextChange}/>

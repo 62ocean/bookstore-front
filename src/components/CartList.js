@@ -48,7 +48,11 @@ export class CartList extends React.Component{
                             }}
                             renderItem={item =>
                                 <List.Item>
-                                    <CartItem info={item}/>
+                                    {
+                                        item.book.available === 1 ?
+                                            <CartItem info={item}/>
+                                            : <></>
+                                    }
                                 </List.Item>
                             }
                         />

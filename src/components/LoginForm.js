@@ -7,7 +7,7 @@ import {history} from "../utils/history";
 const LoginForm = () => {
 
     const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+        // console.log('Received values of form: ', values);
         // console.log(JSON.stringify(values));
         login(values, callback);
     };
@@ -16,10 +16,16 @@ const LoginForm = () => {
         console.log(data);
         if (data == null) {
             message.info("用户名或密码不正确！");
+        } else if (data.type === "user" && data.available === 0) {
+            message.info("您的帐号已被禁用！");
         } else {
             message.info("登录成功！");
             localStorage.setItem("user", JSON.stringify(data));
-            history.push("/home");
+            if (data.type === "user") {
+                history.push("/home");
+            } else {
+                history.push("/book-manage");
+            }
             history.go();
         }
     }

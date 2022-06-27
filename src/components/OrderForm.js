@@ -13,7 +13,7 @@ const OrderForm = (props) => {
 
         values.user_id = user.userId;
         values.price = props.price;
-        console.log(values);
+        // console.log(values);
         submitOrder(values,callback);
     };
 
