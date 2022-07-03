@@ -1,10 +1,18 @@
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import {Form, Input, Button, Checkbox, message, Col, Row} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import "../css/login.css"
 import {login} from "../services/userService";
 import {history} from "../utils/history";
+import React ,{useState, useEffect} from "react";
+import RegisterModal from "./RegisterModal";
 
 const LoginForm = () => {
+
+    const [ifRegister, setIfRegister] = useState(false);
+
+    // const setInvisible = () => {
+    //     setIfRegister(false);
+    // }
 
     const onFinish = (values) => {
         // console.log('Received values of form: ', values);
@@ -32,6 +40,7 @@ const LoginForm = () => {
 
     return (
         <div id={"components-form-demo-normal-login"}>
+            <h2>E-BOOK网上书店</h2><br />
             <Form
                 name="normal_login"
                 className="login-form"
@@ -68,9 +77,10 @@ const LoginForm = () => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         登录
                     </Button>
-                    或 <a href="">现在注册</a>
+                    或 <a onClick={()=>setIfRegister(true)}>现在注册</a>
                 </Form.Item>
             </Form>
+            <RegisterModal isVisible={ifRegister} setInvisible={()=>setIfRegister(false)}/>
         </div>
 
     );

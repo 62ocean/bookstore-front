@@ -7,7 +7,10 @@ class LoginView extends React.Component{
 
     render(){
         return(
-            <LoginForm />
+            <div>
+
+                <LoginForm />
+            </div>
         );
 
     }

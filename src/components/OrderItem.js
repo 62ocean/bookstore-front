@@ -35,7 +35,9 @@ export class OrderItem extends React.Component{
         const {info} = this.props;
         let showItems = [];
         for (let i = 0; i < info.orderItems.length; ++i) {
-            showItems.push(<p>{info.orderItems[i].book.name} ×{info.orderItems[i].num}</p>);
+            showItems.push(<p>{info.orderItems[i].book.name}&emsp;
+                ￥{info.orderItems[i].book.price}&emsp;
+                ×{info.orderItems[i].num}</p>);
          }
         const time = new Date(info.time);
         // console.log(time);
