@@ -15,12 +15,21 @@ export class CartList extends React.Component{
     componentDidMount() {
 
         const callback =  (data) => {
-            console.log(data);
+            // console.log(data);
             this.setState({cartBooks:data});
         };
         const user = JSON.parse(localStorage.getItem("user"));
         getCartBooks(user.userId, callback);
 
+    }
+
+    changeNum = () => {
+        const callback =  (data) => {
+            // console.log(data);
+            this.setState({cartBooks:data});
+        };
+        const user = JSON.parse(localStorage.getItem("user"));
+        getCartBooks(user.userId, callback);
     }
 
     render() {
@@ -50,7 +59,7 @@ export class CartList extends React.Component{
                                 <List.Item>
                                     {
                                         item.book.available === 1 ?
-                                            <CartItem info={item}/>
+                                            <CartItem info={item} changeNum={this.changeNum}/>
                                             : <></>
                                     }
                                 </List.Item>

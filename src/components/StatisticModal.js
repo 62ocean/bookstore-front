@@ -35,7 +35,7 @@ const StatisticModal = (props) => {
 
     let totalPrice = 0, totalNum = 0;
     data.forEach((item) => {
-        totalPrice += item.price;
+        totalPrice += item.price * item.num;
         totalNum += item.num;
     })
 

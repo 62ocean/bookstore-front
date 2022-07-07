@@ -1,14 +1,15 @@
 import React ,{useState, useEffect} from "react";
 import {Button, Checkbox, InputNumber} from "antd";
-import {deleteCartBook} from "../services/cartService";
+import {changeCartNum, deleteCartBook} from "../services/cartService";
 import {history} from "../utils/history";
 import "../css/shopping-cart.css"
 
 const CartItem = (props) => {
 
+    const [refresh, setRefresh] = useState(false);
     const {info} = props;
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(info);
+    // console.log(info);
 
     const handleDelete = () => {
         const data = {
@@ -24,6 +25,15 @@ const CartItem = (props) => {
         history.go();
     }
 
+    const numberChange = (value) => {
+        const changeNum = (data) => {
+            setRefresh(true);
+            props.changeNum();
+        }
+        console.log('changed', value);
+        changeCartNum(info.book.id, user.userId, value, changeNum);
+    };
+
     return (
         <div className="book-in-cart">
             {/*<Checkbox style={{float:"left"}}/>*/}
@@ -36,7 +46,7 @@ const CartItem = (props) => {
             </div>
             <div className="buy-number">
                 <p>购买数量：</p>
-                <InputNumber min="1" max="10" value={info.num}/>
+                <InputNumber min={1} value={info.num} onChange={numberChange}/>
                 <Button onClick={handleDelete}>删除</Button>
             </div>
         </div>

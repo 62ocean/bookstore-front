@@ -1,4 +1,5 @@
 import {postRequest} from "../utils/ajax";
+import {callback} from "chart.js/helpers";
 
 export const getBooks = (callback) => {
     const url = "http://localhost:8080/getbooks";
@@ -24,3 +25,4 @@ export const bookStatistics = (date1, date2, callback) => {
     const url = "http://localhost:8080/bookStatistics";
     postRequest(url, {"date1":date1,"date2":date2}, callback);
 }
+
