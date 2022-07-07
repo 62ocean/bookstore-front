@@ -59,7 +59,7 @@ const StatisticModal = (props) => {
                 <RangePicker  onChange={selectDate}  style={{marginBottom: 30}}/>
 
 
-                <h4>购书总本数：{totalNum} &emsp; 购书总金额：￥{totalPrice}</h4>
+                <h4>购书总本数：{totalNum} &emsp; 购书总金额：￥{totalPrice.toFixed(2)}</h4>
                 <List
                     size="small"
                     bordered
@@ -71,7 +71,7 @@ const StatisticModal = (props) => {
                     }}
 
                     dataSource={data}
-                    renderItem={(item) => <p>&emsp;{item.book} &emsp;￥{item.price} &emsp;×{item.num}</p>}
+                    renderItem={(item) => <p>&emsp;{item.book} &emsp;￥{item.price.toFixed(2)} &emsp;×{item.num}</p>}
                 />
             </Modal>
         </>

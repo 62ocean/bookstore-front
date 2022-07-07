@@ -13,7 +13,7 @@ const OrderForm = (props) => {
         // console.log('Success:', values);
 
         values.user_id = user.userId;
-        values.price = props.price;
+        values.price = props.price.toFixed(2);
         // console.log(values);
         submitOrder(values,callback);
     };

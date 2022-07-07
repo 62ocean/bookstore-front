@@ -31,7 +31,7 @@ export class Book extends React.Component {
                     cover={<img alt="image" src={info.image} />}
                     // onClick={this.handleClick()}
                 >
-                    <Meta title={info.name} description={"￥"+info.price} />
+                    <Meta title={info.name} description={"￥"+info.price.toFixed(2)} />
                 </Card>
             </Link>
 

@@ -45,7 +45,7 @@ const AdminBookItem = (props) => {
                                 <Col span={5}><h4>{info.name}</h4></Col>
                                 <Col span={3}><h4>{info.type}</h4></Col>
                                 <Col span={4}><h4>{info.author}</h4></Col>
-                                <Col span={2}><h4>￥{info.price}</h4></Col>
+                                <Col span={2}><h4>￥{info.price.toFixed(2)}</h4></Col>
                                 <Col span={2}><h4>库存：{info.inventory}</h4></Col>
                             </Row>
                             <p>{info.description}</p>

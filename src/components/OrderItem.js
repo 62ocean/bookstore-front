@@ -36,7 +36,7 @@ export class OrderItem extends React.Component{
         let showItems = [];
         for (let i = 0; i < info.orderItems.length; ++i) {
             showItems.push(<p>{info.orderItems[i].book.name}&emsp;
-                ￥{info.orderItems[i].book.price}&emsp;
+                ￥{info.orderItems[i].book.price.toFixed(2)}&emsp;
                 ×{info.orderItems[i].num}</p>);
          }
         const time = new Date(info.time);
@@ -46,7 +46,7 @@ export class OrderItem extends React.Component{
                 <div className="one-order">
                     <h2>{time.getFullYear()}-{time.getMonth()+1}-{time.getDate()}&emsp;
                         {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}</h2>
-                    <p>￥{info.price}</p>
+                    <p>￥{info.price.toFixed(2)}</p>
                     <p>收货地址：{info.address}</p>
                     <p>收货人：{info.receiver}</p>
                     <p>收货人联系方式：{info.tele}</p>

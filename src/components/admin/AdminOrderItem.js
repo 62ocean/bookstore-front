@@ -20,7 +20,7 @@ const AdminOrderItem = (props) => {
                 {time.getHours()}:{time.getMinutes()}:{time.getSeconds()}</h2>
             <Row>
                 <Col span={4}><h4>用户名：{info.user.username}</h4></Col>
-                <Col span={4}><h4>订单总价：{info.price}</h4></Col>
+                <Col span={4}><h4>订单总价：{info.price.toFixed(2)}</h4></Col>
                 <Col span={4}><h4>收货地址：{info.address}</h4></Col>
                 <Col span={4}><h4>收货人：{info.receiver}</h4></Col>
                 <Col span={4}><h4>收货人联系方式：{info.tele}</h4></Col>

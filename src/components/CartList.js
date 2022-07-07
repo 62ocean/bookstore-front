@@ -23,7 +23,7 @@ export class CartList extends React.Component{
 
     }
 
-    changeNum = () => {
+    refresh = () => {
         const callback =  (data) => {
             // console.log(data);
             this.setState({cartBooks:data});
@@ -59,7 +59,7 @@ export class CartList extends React.Component{
                                 <List.Item>
                                     {
                                         item.book.available === 1 ?
-                                            <CartItem info={item} changeNum={this.changeNum}/>
+                                            <CartItem info={item} refresh={this.refresh}/>
                                             : <></>
                                     }
                                 </List.Item>
