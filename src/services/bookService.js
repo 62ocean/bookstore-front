@@ -1,28 +1,28 @@
 import {postRequest} from "../utils/ajax";
-import {callback} from "chart.js/helpers";
+import {backurl} from "../config/urlConfig";
 
 export const getBooks = (callback) => {
-    const url = "http://localhost:8080/getbooks";
+    const url = backurl + "/getbooks";
     postRequest(url, null, callback);
 };
 
 export const getBook = (id, callback) => {
-    const url = "http://localhost:8080/getbook?id="+id;
+    const url = backurl + "/getbook?id="+id;
     postRequest(url, null, callback);
 };
 
 export const updateBook = (data, callback) => {
-    const url = "http://localhost:8080/updatebook";
+    const url = backurl + "/updatebook";
     postRequest(url, data, callback);
 }
 
 export const deleteBook = (id, callback) => {
-    const url = "http://localhost:8080/deletebook";
+    const url = backurl + "/deletebook";
     postRequest(url, {"id":id}, callback);
 };
 
 export const bookStatistics = (date1, date2, callback) => {
-    const url = "http://localhost:8080/bookStatistics";
+    const url = backurl + "/bookStatistics";
     postRequest(url, {"date1":date1,"date2":date2}, callback);
 }
 

@@ -1,12 +1,13 @@
 import {postRequest} from "../utils/ajax";
+import {backurl} from "../config/urlConfig";
 
 export const submitOrder = (data, callback) => {
-    const url = "http://localhost:8080/receiveOrders";
+    const url = backurl + "/receiveOrders";
     postRequest(url, data, callback);
 };
 
 export const getOrders = (user_id, callback) => {
-    const url = "http://localhost:8080/getOrders";
+    const url = backurl + "/getOrders";
     postRequest(url, {"user_id":user_id}, callback);
 };
 
@@ -16,7 +17,7 @@ export const getOrders = (user_id, callback) => {
 // };
 
 export const getAllOrders = (callback) => {
-    const url = "http://localhost:8080/getAllOrders";
+    const url = backurl + "/getAllOrders";
     postRequest(url, null, callback);
 }
 
