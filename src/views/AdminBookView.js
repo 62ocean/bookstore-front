@@ -4,7 +4,7 @@ import MenuBar from "../components/MenuBar";
 import BookDetail from "../components/BookDetail";
 import Banner from "../components/Banner";
 import {BookList} from "../components/BookList";
-import AdminMenuBar from "../components/AdminMenuBar";
+import AdminMenuBar from "../components/admin/AdminMenuBar";
 import AdminBookList from "../components/admin/AdminBookList";
 
 const {Header, Content, Footer} = Layout;

@@ -1,7 +1,7 @@
 import React from "react";
 import 'antd/dist/antd.css';
 import {Menu} from 'antd'
-import {history} from "../utils/history";
+import {history} from "../../utils/history";
 
 const items = [
     {

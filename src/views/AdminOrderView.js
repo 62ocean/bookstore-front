@@ -1,6 +1,6 @@
 import React from "react";
 import {Layout} from "antd";
-import AdminMenuBar from "../components/AdminMenuBar";
+import AdminMenuBar from "../components/admin/AdminMenuBar";
 import AdminOrderList from "../components/admin/AdminOrderList";
 
 const {Header, Content, Footer} = Layout;

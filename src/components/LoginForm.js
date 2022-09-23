@@ -23,11 +23,11 @@ const LoginForm = () => {
     const callback = (data) => {
         console.log(data);
         if (data == null) {
-            message.info("用户名或密码不正确！");
+            message.error("用户名或密码不正确！");
         } else if (data.type === "user" && data.available === 0) {
-            message.info("您的帐号已被禁用！");
+            message.error("您的帐号已被禁用！");
         } else {
-            message.info("登录成功！");
+            message.success("登录成功！");
             localStorage.setItem("user", JSON.stringify(data));
             if (data.type === "user") {
                 history.push("/home");

@@ -37,7 +37,7 @@ const BookDetail = (props) => {
     }
     const add_callback = (data) => {
         // console.log(data);
-        if (data === 2) message.info("《"+book.name+"》添加购物车成功！");
+        if (data === 2) message.success("《"+book.name+"》添加购物车成功！");
         else message.info("《"+book.name+"》已在购物车中！");
 
     }

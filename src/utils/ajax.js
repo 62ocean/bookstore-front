@@ -9,7 +9,7 @@ let postRequest = (url, json, callback) => {
         credentials: "include"
     };
 
-    fetch(url,opts)
+    fetch("http://localhost:8080"+url,opts)
         .then((response) => {
             return response.json()
         })

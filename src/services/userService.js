@@ -1,33 +1,31 @@
 import {postRequest} from "../utils/ajax";
-import {callback} from "chart.js/helpers";
-import {backurl} from "../config/urlConfig";
 
 export const login = (user, callback) => {
-    const url = backurl + "/findUser";
+    const url =  "/login";
     postRequest(url, user, callback);
 }
 export const register = (user, callback) => {
-    const url = backurl + "/register";
+    const url =  "/register";
     postRequest(url, user, callback);
 }
 
 export const getAllUsers = (callback) => {
-    const url = backurl + "/getAllUsers";
+    const url =  "/getAllUsers";
     postRequest(url, null, callback);
 }
 
 export const changeUserStatus = (userId, callback) => {
-    const url = backurl + "/changeUserStatus";
+    const url =  "/changeUserStatus";
     postRequest(url, {"userId":userId}, callback);
 }
 
 export const userStatistics = (date1, date2, callback) => {
-    const url = backurl + "/userStatistics";
+    const url =  "/userStatistics";
     postRequest(url, {"date1":date1,"date2":date2}, callback);
 }
 
 export const userBookStatistics = (userId, date1, date2, callback) => {
-    const url = backurl + "/userBookStatistics";
+    const url =  "/userBookStatistics";
     postRequest(url, {"userId":userId,"date1":date1,"date2":date2}, callback);
 }
 

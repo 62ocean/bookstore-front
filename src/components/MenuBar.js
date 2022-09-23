@@ -1,7 +1,8 @@
 import React from "react";
 import 'antd/dist/antd.css';
-import {Menu} from 'antd'
+import {Menu, Modal, Result, Button, Alert, Space} from 'antd'
 import {history} from "../utils/history";
+import {postRequest} from "../utils/ajax";
 
 const items = [
     {
@@ -30,22 +31,69 @@ const MenuBar = () => {
     else if (url === "/my-order") selectKey = 'order';
 
     const [current, setCurrent] = React.useState(selectKey);
+    const [loginTime, setLoginTime] = React.useState(1000);
+    const [showTime, setShowTime] = React.useState(false);
 
 
     const onClick = (e) => {
         if (e.key === 'books') history.push("/home");
         else if (e.key === 'cart') history.push("/my-cart");
         else if (e.key === 'order') history.push("/my-order");
+
         if (e.key === 'logout') {
-            localStorage.clear();
-            history.push("/");
+            postRequest("/logout", null, (data) => {
+                console.log(data);
+                setLoginTime(data);
+                setShowTime(true);
+            })
+        } else {
+            history.go();
         }
-        history.go();
     };
 
+    const formatTime = (msTime) => {
+        let time = msTime / 1000;
+        let hour = Math.floor(time / 60 / 60);
+        hour = hour.toString().padStart(2, "0");
+        let minute = Math.floor(time / 60) % 60;
+        minute = minute.toString().padStart(2, "0");
+        let second = Math.floor(time) % 60;
+        second = second.toString().padStart(2, "0");
+        return `${hour}:${minute}:${second}`;
+    }
+
+    let loginTimeString = "本次登录保持时间：" + formatTime(loginTime) + ",  确定登出吗？";
 
     return (
-        <Menu  onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+        <div>
+            <Menu  onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+            {showTime ?
+                <Alert
+                    message={loginTimeString}
+                    type="info"
+                    action={
+                        <Space direction="horizontal">
+                            <Button
+                                size="small"
+                                type="primary"
+                                onClick={ () => {
+                                    localStorage.clear();
+                                    history.push("/");
+                                    history.go();
+                                }}
+                            >
+                                确定
+                            </Button>
+                            <Button size="small" danger type="ghost" onClick={()=>{setShowTime(false)}}>
+                                取消
+                            </Button>
+                        </Space>
+                    }
+                /> : <></>
+            }
+
+        </div>
+
     );
 
 };
