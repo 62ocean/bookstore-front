@@ -23,9 +23,12 @@ const OrderForm = (props) => {
     };
 
     const callback = (data) => {
-        message.info("下订单成功！");
-        history.push("/my-order");
-        history.go();
+        message.info("订单已发送，稍后可见，即将返回首页……");
+        setTimeout(()=>{
+            history.push("/home");
+            history.go();
+        }, 1000)
+        //1000ms的空隙可能会导致用户重复下订，有空可以修复一下
     }
 
     return (
