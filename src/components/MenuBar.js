@@ -1,20 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import 'antd/dist/antd.css';
 import {Menu, Modal, Result, Button, Alert, Space} from 'antd'
 import {history} from "../utils/history";
 import {postRequest} from "../utils/ajax";
+import {Link} from "react-router-dom";
+import {closeSocket} from "../utils/websocket";
 
 const items = [
     {
-        label: '所有书籍',
+        label: <Link to={'/home'}>所有书籍</Link>,
         key: 'books',
     },
     {
-        label: '我的购物车',
+        label: <Link to={'/my-cart'}>我的购物车</Link>,
         key: 'cart',
     },
     {
-        label: '我的订单',
+        label: <Link to={'/my-order'}>我的订单</Link>,
         key: 'order',
     },
     {
@@ -24,7 +26,8 @@ const items = [
 ];
 
 const MenuBar = () => {
-    const url = history.location.pathname;
+    const url = window.location.pathname;
+
     let selectKey;
     if (url === "/home") selectKey = 'books';
     else if (url === "/my-cart") selectKey = 'cart';
@@ -36,18 +39,12 @@ const MenuBar = () => {
 
 
     const onClick = (e) => {
-        if (e.key === 'books') history.push("/home");
-        else if (e.key === 'cart') history.push("/my-cart");
-        else if (e.key === 'order') history.push("/my-order");
-
         if (e.key === 'logout') {
             postRequest("/logout", null, (data) => {
                 console.log(data);
                 setLoginTime(data);
                 setShowTime(true);
             })
-        } else {
-            history.go();
         }
     };
 
@@ -78,11 +75,12 @@ const MenuBar = () => {
                                 type="primary"
                                 onClick={ () => {
                                     localStorage.clear();
-                                    history.push("/");
-                                    history.go();
+                                    closeSocket();
+                                    // history.push("/");
+                                    // history.go();
                                 }}
                             >
-                                确定
+                                <Link to={"/"}>确定</Link>
                             </Button>
                             <Button size="small" danger type="ghost" onClick={()=>{setShowTime(false)}}>
                                 取消

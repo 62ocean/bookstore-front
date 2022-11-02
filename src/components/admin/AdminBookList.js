@@ -40,7 +40,7 @@ const AdminBookList = (props) => {
 
     const showBooks = [];
     books.forEach((book) => {
-        if ((book.name.indexOf(filterText) === -1) || (book.available === 0)) return;
+        if ((book.name.indexOf(filterText) === -1)) return;
         showBooks.push(book);
     });
 

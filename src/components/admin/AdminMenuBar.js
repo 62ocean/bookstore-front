@@ -2,22 +2,23 @@ import React from "react";
 import 'antd/dist/antd.css';
 import {Menu} from 'antd'
 import {history} from "../../utils/history";
+import {Link} from "react-router-dom";
 
 const items = [
     {
-        label: '书籍管理',
+        label: <Link to={'/book-manage'}>书籍管理</Link>,
         key: 'books',
     },
     {
-        label: '用户管理',
+        label: <Link to={'/user-manage'}>用户管理</Link>,
         key: 'user',
     },
     {
-        label: '订单管理',
+        label: <Link to={'/order-manage'}>订单管理</Link>,
         key: 'order',
     },
     {
-        label: '统计',
+        label: <Link to={'/statistics'}>统计</Link>,
         key: 'statistics',
     },
     {
@@ -27,7 +28,8 @@ const items = [
 ];
 
 const AdminMenuBar = () => {
-    const url = history.location.pathname;
+    const url = window.location.pathname;
+
     let selectKey;
     if (url === "/book-manage") selectKey = 'books';
     else if (url === "/user-manage") selectKey = 'user';
@@ -38,15 +40,11 @@ const AdminMenuBar = () => {
 
 
     const onClick = (e) => {
-        if (e.key === 'books') history.push("/book-manage");
-        else if (e.key === 'user') history.push("/user-manage");
-        else if (e.key === 'order') history.push("/order-manage");
-        else if (e.key === 'statistics') history.push("/statistics");
-        else if (e.key === 'logout') {
+        if (e.key === 'logout') {
             localStorage.clear();
             history.push("/");
+            history.go();
         }
-        history.go();
     };
 
 

@@ -6,8 +6,12 @@ import MyOrderView from "./views/MyOrderView";
 import TakeOrderView from "./views/TakeOrderView";
 import BasicRoute from "./Router";
 import LoginView from "./views/LoginView";
+import {openSocket} from "./utils/websocket";
 
 function App() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  // console.log(user);
+  if (user !== null) openSocket();
   return (
     <BasicRoute />
     //   <LoginView />

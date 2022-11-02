@@ -3,6 +3,7 @@ import { Form, Input, Button, Checkbox, Radio, message } from 'antd';
 import "../css/order.css"
 import {submitOrder} from "../services/orderService";
 import {history} from "../utils/history";
+import {Link} from "react-router-dom";
 
 const OrderForm = (props) => {
 
@@ -23,11 +24,11 @@ const OrderForm = (props) => {
     };
 
     const callback = (data) => {
-        message.info("订单已发送，稍后可见，即将返回首页……");
-        setTimeout(()=>{
-            history.push("/home");
-            history.go();
-        }, 1000)
+        message.info("订单已发送，稍后跳转……");
+        // setTimeout(()=>{
+        //     history.push("/home");
+        //     history.go();
+        // }, 1000)
         //1000ms的空隙可能会导致用户重复下订，有空可以修复一下
     }
 
@@ -111,6 +112,7 @@ const OrderForm = (props) => {
                     <Button type="primary" htmlType="submit">
                         确认支付
                     </Button>
+
                 </Form.Item>
             </Form>
         </div>
