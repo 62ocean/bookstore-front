@@ -25,3 +25,9 @@ export const bookStatistics = (date1, date2, callback) => {
     postRequest(url, {"date1":date1,"date2":date2}, callback);
 }
 
+export const searchBooks = (keyword, callback) => {
+    const url = "/searchBooks";
+    console.log({"keyword":keyword});
+    postRequest(url, {"keyword":keyword}, callback);
+};
+

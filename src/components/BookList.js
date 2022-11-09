@@ -1,7 +1,7 @@
 import React from 'react';
 import {List} from 'antd'
 import {Book} from './Book'
-import {getBooks} from "../services/bookService";
+import {getBooks, searchBooks} from "../services/bookService";
 import SearchBar from "./SearchBar";
 
 
@@ -14,25 +14,40 @@ export class BookList extends React.Component{
             books: [],
             filterText: "",
         };
-        this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        // this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+        this.searchBooks = this.searchBooks.bind(this);
+        this.getAllBooks = this.getAllBooks.bind(this);
     }
 
     componentDidMount() {
 
+        this.getAllBooks();
+
+    }
+
+    // handleFilterTextChange(filterText) {
+    //     this.setState({
+    //         filterText: filterText,
+    //     });
+    // }
+
+    searchBooks(keyword) {
+        const callback =  (data) => {
+            // console.log(data);
+            this.setState({books: data});
+        }
+
+        searchBooks(keyword, callback);
+    }
+    getAllBooks() {
         const callback =  (data) => {
             // console.log(data);
             this.setState({books: data});
         }
 
         getBooks( callback);
-
     }
 
-    handleFilterTextChange(filterText) {
-        this.setState({
-            filterText: filterText,
-        });
-    }
 
     render() {
         const filterText = this.state.filterText;
@@ -44,7 +59,7 @@ export class BookList extends React.Component{
 
         return (
             <div>
-                <SearchBar onFilterTextChange={this.handleFilterTextChange}/>
+                <SearchBar onSearch={this.searchBooks} onAll={this.getAllBooks}/>
 
                 <div className="container">
                     <List
